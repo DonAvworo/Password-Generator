@@ -1,0 +1,31 @@
+java script tasks break down 
+
+1 => Create a button handler using DOM methods to get button element
+    * use getElementbyid to fetch button
+    * add a click event to the button
+
+2 => create a function for the button to carry out list of tasks below
+    (a) when button is clicked:
+        * a prompt instructing user how many characters shold be provided (8 minimum and 128 maximum)
+        * criterials for the password generator is presented in series as follows 
+            1. prompt for lenght of the password 
+            2. prompt for the lower case letters
+            3. prompt for upper case letters
+            4. prompt for special characters
+            5. prompt for numerals 
+    
+    (b) if none of the characters types are selected; 
+        * display (using an alert) a message that advises user to select at least one character type
+        * return null and password gen stops
+    
+    (c) if one or more character types are selected
+        * validete input and start the generation process
+        * display value of password 
+            - use alert (easy optio MVP)
+            - or print on page
+
+3 => Selecting Characters For the Generator
+
+    Arrays
+
+
