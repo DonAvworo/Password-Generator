@@ -5,6 +5,7 @@ java script tasks break down
     * add a click event to the button
 
 2 => create a function for the button to carry out list of tasks below
+    
     (a) when button is clicked:
         * a prompt instructing user how many characters shold be provided (8 minimum and 128 maximum)
         * criterials for the password generator is presented in series as follows 
@@ -26,6 +27,19 @@ java script tasks break down
 
 3 => Selecting Characters For the Generator
 
-    Arrays
+    (a) create [Arrays] for the the user input character
+        * capitalLetter ['A', 'B', .....,'Z']
+        * smallLetters ['a', 'b', ...., 'z']
+        * numericChar [0','1', '2',....'9']
+        * scpecialChar ['&', '*' etc]
+            - arrays must be in strings 
+            - create Variables for the arrays  
+
+4 => Create functions to carry out tasks
+
+    (a) Function to carry out click event and will execute;
+        1. prompts for user inputs
+        2. prompt for wrong inputs
+        3. prompts for character types
 
 
