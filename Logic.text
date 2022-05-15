@@ -22,7 +22,7 @@ java script tasks break down
     (c) if one or more character types are selected
         * validete input and start the generation process
         * display value of password 
-            - use alert (easy optio MVP)
+            - use alert (easy option (MVP)
             - or print on page
 
 3 => Selecting Characters For the Generator
