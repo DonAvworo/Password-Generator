@@ -18,6 +18,12 @@ const specialChar = [
     '@', '%', '+', '\\', '/', "'", '!', '#', '$', '^', '?', ':', ',', ')', '(', '}', '{', ']', '[', '~', '-', '_', '.',
 ];
 
+// variable to store user input if users mistyped at input
+// const enterCapsOnly = [
+//     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+//     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+// ];
+
 // create a function that will start the password generating process
 function  handleClick(){
    
@@ -36,8 +42,8 @@ function  handleClick(){
         alert("Good bye");
         return null;
     }
-
-    // if (userInput === capitalChar) {
+    // // alert to user if they mistyped, and using capitals
+    // if (userInput === enterCapsOnly) {
     //     alert("You must enter a number");
     //     return null;
     // }
@@ -111,36 +117,35 @@ function generatePassword(options){
     let selectedRandChar = [];
     let confirmedChar = [];
 
-if (!options) return null;
+    if (!options) return null;
 
-if (options.contNumericChar) {
-    selectedRandChar = selectedRandChar.concat(numericChar)
-    confirmedChar.push(randomCharInArray(numericChar));
-}
+    if (options.contNumericChar) {
+        selectedRandChar = selectedRandChar.concat(numericChar)
+        confirmedChar.push(randomCharInArray(numericChar));
+    }
 
-if (options.contCapitalChar) {
+    if (options.contCapitalChar) {
     selectedRandChar = selectedRandChar.concat(capitalChar)
     confirmedChar.push(randomCharInArray(capitalChar));
-}
+    }
 
-if (contSmallChar) {
+        if (contSmallChar) {
     selectedRandChar = selectedRandChar.concat(contSmallChar)
     confirmedChar.push(randomCharInArray(contSmallChar));
-}
+        }
 
-if (contSpecialChar) {
-    selectedRandChar = selectedRandChar.concat(contSpecialChar)
-    confirmedChar.push(randomCharInArray(contSpecialChar));
-}
-// use a for loop  to loop through the arrays and select indexes  in arrays randomly
-for (let i = 0; i < options.lenght; i++) {
+    if (contSpecialChar) {
+        selectedRandChar = selectedRandChar.concat(contSpecialChar)
+        confirmedChar.push(randomCharInArray(contSpecialChar));
+    }
+    // use a for loop  to loop through the arrays and select indexes  in arrays randomly
+    for (let i = 0; i < options.lenght; i++) {
     let confirmedChar = randomCharInArray(confirmedChar);
     result.push(confirmedChar);
-}
-
-for (let i = 0; i < confirmedChar.length; i++) {
+    } 
+    for (let i = 0; i < confirmedChar.length; i++) {
     result [i] = confirmedChar[i];
-}
-return result.join('');
+    }
+    return result.join('');
 }
 
