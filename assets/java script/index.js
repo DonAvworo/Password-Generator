@@ -1,5 +1,7 @@
+const passwordDisplay = document.getElementById("password-display");
+
 // Create a button handler using DOM methods to get button element
-const startBtn = document.getElementById('imgButton').addEventListener('click', generatePassword);
+const startBtn = document.getElementById('imgButton').addEventListener('click', handleClick);
 
 // arrays of characters to generate password
 const numericChar  = ['0', '1', '2', '3', '4', '5', '6', '7',
@@ -17,7 +19,7 @@ const specialChar = [
 ];
 
 // create a function that will start the password generating process
-function generatePassword(){
+function  handleClick(){
    
     // create a variable that will store the input of user
     /* parseInt is used here to correct(roundup) the input of the user. an example would be
@@ -56,38 +58,89 @@ function generatePassword(){
 
     if (userInput < 8){
         alert('Input must be more than 7 character, and less than 129');
+        return null;
     } 
 
     if (userInput > 129){
         alert('Input must be less than 129 characters but more than 7');
+        return null;
     } 
 
-    const numericChar = confirm("Add numbers to Password.");
+    const contNumericChar = confirm("Add numbers to Password.");
 
-    const capitalChar = confirm ("Add capital letters to Password");
+    const contCapitalChar = confirm ("Add capital letters to Password");
 
-    const smallChar = confirm("Add small letters to Password");
+    const contSmallChar = confirm("Add small letters to Password");
 
-    const specialChar = confirm("Add special characters to Password");
+    const contSpecialChar = confirm("Add special characters to Password");
 
-    // if no character is selected this code will run and send user an alert
+    // if input does not contain any character set this code will run and send user an alert
     if (
-        !numericChar &&
-        !capitalChar &&
-        !smallChar  &&
-        !specialChar
+        !contNumericChar &&
+        !contCapitalChar &&
+        !contSmallChar  &&
+        !contSpecialChar
         ){ 
         alert("Please input at least one character type for password")
         return null;
     };
 
-    const myVariables = {
+    const options = {
         userInput:  userInput,
-        numericChar: numericChar,
-        capitalChar: capitalChar,
-        specialChar: specialChar,
+        contNumericChar:contNumericChar,
+        contCapitalChar: contCapitalChar,
+        contSmallChar: contSmallChar,
+        contSpecialChar: contSpecialChar,
     };
 
-    const passWord = generatePassword(userInput)
-    console.log(passWord);
+    // the variable "passWord" created here will be used to run the function to generate passWord
+    const passWord = generatePassword(options)
+    passwordDisplay.value = passWord;
+    return;
 }
+// rounding up the   
+function randomCharInArray(arr){
+    let randomIndex = math.floor(math.random()* arr.lenght);
+    let randElement = arr[randomIndex];
+
+    return  randElement;
+}
+
+function generatePassword(options){
+    let result = [];
+    let selectedRandChar = [];
+    let confirmedChar = [];
+
+if (!options) return null;
+
+if (options.contNumericChar) {
+    selectedRandChar = selectedRandChar.concat(numericChar)
+    confirmedChar.push(randomCharInArray(numericChar));
+}
+
+if (options.contCapitalChar) {
+    selectedRandChar = selectedRandChar.concat(capitalChar)
+    confirmedChar.push(randomCharInArray(capitalChar));
+}
+
+if (contSmallChar) {
+    selectedRandChar = selectedRandChar.concat(contSmallChar)
+    confirmedChar.push(randomCharInArray(contSmallChar));
+}
+
+if (contSpecialChar) {
+    selectedRandChar = selectedRandChar.concat(contSpecialChar)
+    confirmedChar.push(randomCharInArray(contSpecialChar));
+}
+// use a for loop  to loop through the arrays and select indexes  in arrays randomly
+for (let i = 0; i < options.lenght; i++) {
+    let confirmedChar = randomCharInArray(confirmedChar);
+    result.push(confirmedChar);
+}
+
+for (let i = 0; i < confirmedChar.length; i++) {
+    result [i] = confirmedChar[i];
+}
+return result.join('');
+}
+
