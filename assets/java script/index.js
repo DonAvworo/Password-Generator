@@ -106,46 +106,45 @@ function  handleClick(){
 }
 // rounding up the   
 function randomCharInArray(arr){
-    let randomIndex = math.floor(math.random()* arr.lenght);
+    let randomIndex = Math.floor(Math.random()* arr.length);
     let randElement = arr[randomIndex];
 
     return  randElement;
 }
 
 function generatePassword(options){
+
     let result = [];
-    let selectedRandChar = [];
-    let confirmedChar = [];
+    //let selectedRandChar = [];
+    //let confirmedChar = [];
+
+    let possibleChars = [];
 
     if (!options) return null;
 
     if (options.contNumericChar) {
-        selectedRandChar = selectedRandChar.concat(numericChar)
-        confirmedChar.push(randomCharInArray(numericChar));
+        possibleChars = possibleChars.concat(numericChar);
     }
 
     if (options.contCapitalChar) {
-    selectedRandChar = selectedRandChar.concat(capitalChar)
-    confirmedChar.push(randomCharInArray(capitalChar));
+        possibleChars = possibleChars.concat(capitalChar);
     }
 
-        if (contSmallChar) {
-    selectedRandChar = selectedRandChar.concat(contSmallChar)
-    confirmedChar.push(randomCharInArray(contSmallChar));
-        }
-
-    if (contSpecialChar) {
-        selectedRandChar = selectedRandChar.concat(contSpecialChar)
-        confirmedChar.push(randomCharInArray(contSpecialChar));
+    if (options.contSmallChar) {
+        possibleChars = possibleChars.concat(smallChar);
     }
+
+    if (options.contSpecialChar) {
+        possibleChars = possibleChars.concat(specialChar);
+    }
+
     // use a for loop  to loop through the arrays and select indexes  in arrays randomly
-    for (let i = 0; i < options.lenght; i++) {
-    let confirmedChar = randomCharInArray(confirmedChar);
-    result.push(confirmedChar);
+    for (let i = 0; i < options.userInput; i++) {
+    
+        let confirmedChar = randomCharInArray(possibleChars);
+        result.push(confirmedChar);
     } 
-    for (let i = 0; i < confirmedChar.length; i++) {
-    result [i] = confirmedChar[i];
-    }
+
     return result.join('');
 }
 
